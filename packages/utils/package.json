@@ -1,6 +1,6 @@
 {
   "name": "@zoey-cli-dev/utils",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "@zoey-cli-dev utils",
   "author": "zoey.deng <zoey.deng@yingzt.com>",
   "homepage": "",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://r.cnpmjs.org/"
+    "registry": "http://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Run testing from Utils\""

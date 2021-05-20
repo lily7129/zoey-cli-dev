@@ -1,6 +1,6 @@
 {
   "name": "@zoey-cli-dev/core",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "zoey-cli-dev core",
   "author": "zoey.deng <zoey.deng@yingzt.com>",
   "homepage": "",
@@ -17,7 +17,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://r.cnpmjs.org/"
+    "registry": "http://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Run testing from Core\""
