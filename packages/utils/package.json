@@ -1,0 +1,22 @@
+{
+  "name": "@zoey-cli-dev/utils",
+  "version": "1.0.0",
+  "description": "@zoey-cli-dev utils",
+  "author": "zoey.deng <zoey.deng@yingzt.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.cnpmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Run testing from Utils\""
+  }
+}
