@@ -1,6 +1,6 @@
 {
   "name": "@zoey-cli-dev/core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "zoey-cli-dev core",
   "author": "zoey.deng <zoey.deng@yingzt.com>",
   "homepage": "",
@@ -23,6 +23,6 @@
     "test": "echo \"Run testing from Core\""
   },
   "dependencies": {
-    "@zoey-cli-dev/utils": "^1.0.1"
+    "@zoey-cli-dev/utils": "^1.0.4"
   }
 }
