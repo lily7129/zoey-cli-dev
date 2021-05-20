@@ -1,8 +1,8 @@
 {
   "name": "@zoey-cli-dev/core",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "zoey-cli-dev core",
-  "author": "zoey.deng <zoey.deng@yingzt.com>",
+  "author": "zoey.deng",
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
@@ -23,6 +23,7 @@
     "test": "echo \"Run testing from Core\""
   },
   "dependencies": {
-    "@zoey-cli-dev/utils": "^1.0.4"
-  }
+    "@zoey-cli-dev/utils": "^1.0.0"
+  },
+  "gitHead": "5842fa78813f4336689a3bc6ddda0559c5a113b3"
 }

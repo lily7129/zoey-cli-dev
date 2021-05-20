@@ -1,8 +1,8 @@
 {
   "name": "@zoey-cli-dev/utils",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "@zoey-cli-dev utils",
-  "author": "zoey.deng <zoey.deng@yingzt.com>",
+  "author": "zoey.deng",
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
@@ -18,5 +18,6 @@
   },
   "scripts": {
     "test": "echo \"Run testing from Utils\""
-  }
+  },
+  "gitHead": "5842fa78813f4336689a3bc6ddda0559c5a113b3"
 }
