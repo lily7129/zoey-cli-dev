@@ -24,7 +24,9 @@
     "test": "echo \"Run testing from Core\""
   },
   "dependencies": {
-    "@zoey-cli-dev/utils": "^1.0.3"
+    "@zoey-cli-dev/log": "file:../../utils/log",
+    "@zoey-cli-dev/utils": "file:../../utils/utils",
+    "import-local": "^3.0.2"
   },
   "gitHead": "df4aa4e46b14442e518b63284aa5e1f3087db9c6"
 }

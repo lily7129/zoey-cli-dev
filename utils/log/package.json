@@ -1,0 +1,35 @@
+{
+  "name": "@zoey-cli-dev/log",
+  "version": "1.0.3",
+  "description": "zoey-cli-dev log",
+  "keywords": [
+    "log"
+  ],
+  "author": "18210905549@163.com <zoey.deng@yingzt.com>",
+  "homepage": "https://github.com/lily7129/zoey-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.cnpmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lily7129/zoey-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/lily7129/zoey-cli-dev/issues"
+  },
+  "dependencies": {
+    "npmlog": "^4.1.2"
+  }
+}
