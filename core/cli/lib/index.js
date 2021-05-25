@@ -34,6 +34,22 @@ function core() {
     }
 }
 
+function checkGlobalUpdate() {
+  // 获取当前版本号和模块名
+
+  const currentVersion = pkg.version
+  const currentName = pkg.name
+
+  // 调用npm API获取所有版本号
+
+  // 提取所有的版本号，比对版本号大于当前版本号
+  // 获取最新的版本号，提示更新最新的版本号
+    // const currentVersion = 
+    // const dotenvPath = path.resolve(userHome, '.env')
+
+    log.verbose('环境变量', process.env.CLI_HOME_PATH)
+}
+
 function checkEnv() {
     const dotenv = require('dotenv')
     const dotenvPath = path.resolve(userHome, '.env')
@@ -98,6 +114,7 @@ function checkNodeVersion(param) {
     // console.log(currentVerion)
     // 比对最低版本号
     const lowestVersion = constant.LOWEST_NODE_VERSION
+    // console.log(currentVerion)
     if(!semver.gte(currentVerion, lowestVersion)){
         throw new Error(colors.red(`zoey-cli 需要安装 v${lowestVersion}以上版本的 Node.js`))
     }
