@@ -26,7 +26,14 @@
   "dependencies": {
     "@zoey-cli-dev/log": "file:../../utils/log",
     "@zoey-cli-dev/utils": "file:../../utils/utils",
-    "import-local": "^3.0.2"
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "import-local": "^3.0.2",
+    "minimist": "^1.2.5",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.3.5",
+    "user-home": "^3.0.0"
   },
   "gitHead": "df4aa4e46b14442e518b63284aa5e1f3087db9c6"
 }
