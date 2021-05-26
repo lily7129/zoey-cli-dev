@@ -18,9 +18,8 @@ const pkg = require('../package.json')
 const constant = require('./const')
 
 let args
-let config
 
-function core() {
+async function core() { 
     try { 
         checkPkgVersion()
         checkNodeVersion()
@@ -29,25 +28,26 @@ function core() {
         checkInputArgs()
         // log.verbose('debug', 'test debug log')
         checkEnv()
+        await checkGlobalUpdate()
     } catch (e) {
         log.error(e.message)
     }
 }
 
-function checkGlobalUpdate() {
-  // 获取当前版本号和模块名
+async function checkGlobalUpdate() {
+    // 获取当前版本号和模块名
+    const currentVersion = pkg.version
+    const npmName = pkg.name
+    // 调用npmAPI，获取所有版本号
+    // 提取所有版本号，比对那个版本号是大于当前版本号
+    const { getNpmSemverVersion } = require('@zoey-cli-dev/get-npm-info')
+    // 获取最新的版本号，提示用户更新到最新的版本号
+    const lastversions = await getNpmSemverVersion(npmName, currentVersion)
 
-  const currentVersion = pkg.version
-  const currentName = pkg.name
-
-  // 调用npm API获取所有版本号
-
-  // 提取所有的版本号，比对版本号大于当前版本号
-  // 获取最新的版本号，提示更新最新的版本号
-    // const currentVersion = 
-    // const dotenvPath = path.resolve(userHome, '.env')
-
-    log.verbose('环境变量', process.env.CLI_HOME_PATH)
+    if(lastversions && semver.gt(lastversions, currentVersion)) {
+        log.warn(colors.yellow(`请手动更新 ${npmName}，当前版本：${currentVersion}，最新版本：${lastversions}
+          更新命令：npm install -g ${npmName}`)) 
+    }
 }
 
 function checkEnv() {

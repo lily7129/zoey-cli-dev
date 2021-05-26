@@ -26,8 +26,9 @@
   "dependencies": {
     "@zoey-cli-dev/log": "file:../../utils/log",
     "@zoey-cli-dev/utils": "file:../../utils/utils",
-    "@zoey-cli-dev/utils/get-npm-info": "file:../../utils/get-npm-info",
+    "@zoey-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
     "colors": "^1.4.0",
+    "commander": "^7.2.0",
     "dotenv": "^10.0.0",
     "import-local": "^3.0.2",
     "minimist": "^1.2.5",

@@ -1,11 +1,11 @@
 {
   "name": "get-npm-info",
   "version": "1.0.3",
-  "description": "@zoey-cli-dev get-npm-info",
+  "description": "get npm info",
   "keywords": [
-    "get-npm-info"
+    "zoey-cli-dev"
   ],
-  "author": "zoey.deng <18210905549@163.com>",
+  "author": "18210905549@163.com <zoey.deng@yingzt.com>",
   "homepage": "https://github.com/lily7129/zoey-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -28,5 +28,10 @@
   },
   "bugs": {
     "url": "https://github.com/lily7129/zoey-cli-dev/issues"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "semver": "^7.3.5",
+    "url-join": "^4.0.1"
   }
 }
