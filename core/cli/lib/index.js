@@ -11,13 +11,16 @@ const path = require('path')
 const semver = require('semver')
 const colors = require('colors/safe')
 const log = require('@zoey-cli-dev/log')
-const pathExists = require('path-exists').sync
+const init = require('@zoey-cli-dev/init')
+const commander = require('commander')
 const userHome = require('user-home')
+const pathExists = require('path-exists').sync
 
 const pkg = require('../package.json')
 const constant = require('./const')
 
 let args
+const program = new commander.Command()
 
 async function core() { 
     try { 
@@ -25,12 +28,72 @@ async function core() {
         checkNodeVersion()
         checkRoot()
         checkUserHome()
-        checkInputArgs()
-        // log.verbose('debug', 'test debug log')
+        // checkInputArgs()
         checkEnv()
         await checkGlobalUpdate()
+        registerCommand()
     } catch (e) {
         log.error(e.message)
+    }
+}
+
+function registerCommand() {
+    program
+        .name(Object.keys(pkg.bin)[0])
+        .usage('<command> [options]')
+        .version(pkg.version)
+        .option('-d, --debug', '是否开启调试模式', false)
+        .option('-tp, --targetPath <targetPath>', '是否指定本地调试路径', false)
+
+    // 使用commnad注册命令
+    program
+        .command('init [projectName]') 
+        .option('-f, --force', '是否强制启动项目')
+        .action(init)
+
+    // 开始调试模式
+    program
+        .on('option:debug', function() {
+            const options = program.opts()
+            // 修改环境变量的log_level
+            process.env.LOG_LEVEL = options.debug ? 'verbose' : 'info' // 早于命令执行之前做
+
+            // 修改当前实例log的level
+            log.level = process.env.LOG_LEVEL
+
+            // log.verbose('debug', 'verbose')
+        }) // 监听debug命令
+
+    program
+        .on('option:targetPath', function() {
+            const options = program.opts()
+            // 修改环境变量的log_level
+            process.env.LOG_LEVEL = options.debug ? 'verbose' : 'info' // 早于命令执行之前做
+
+            // 修改当前实例log的level
+            log.level = process.env.LOG_LEVEL
+
+            // log.verbose('debug', 'verbose')
+        }) // 监听debug命令
+
+    // 对未知命令监听
+    program
+        .on('command:*', function(obj) {
+            // 说明没有命中之前所有的已注册的命令
+            console.log(colors.red(`未知命令： ${obj[0]}`))
+            if(!program.commands) return
+            const availableCommanders = program.commands.map(cmd => cmd.name())
+            if (availableCommanders.length > 0) {
+                console.log(colors.green(`可用命令： ${availableCommanders.join(',')}`))
+            }
+        }) // 监听debug命令
+        
+
+    program.parse(process.argv)
+    
+    if (program.args && program.args.length < 1) {
+        program.outputHelp()
+        console.log() // 打印空行
     }
 }
 
@@ -123,5 +186,5 @@ function checkNodeVersion(param) {
 function checkPkgVersion() {
     // log.success('test', 'success')
     // log.verbose('debug', 'verbose')
-    log.notice(pkg.version)
+    log.info('cli', pkg.version)
 }
