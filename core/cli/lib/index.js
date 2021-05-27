@@ -177,6 +177,7 @@ function checkNodeVersion(param) {
     // console.log(currentVerion)
     // 比对最低版本号
     const lowestVersion = constant.LOWEST_NODE_VERSION
+    // console.log(currentVerion)
     if(!semver.gte(currentVerion, lowestVersion)){
         throw new Error(colors.red(`zoey-cli 需要安装 v${lowestVersion}以上版本的 Node.js`))
     }
