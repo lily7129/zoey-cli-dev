@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = init;
-
-function init(projectName, cmdObj){
-    console.log('init', projectName, cmdObj)
+function init(projectName, options, command)  {
+    console.log('init', projectName, options, command, process.env.CLI_TARGET_PATH)
 }
+
+module.exports = init;

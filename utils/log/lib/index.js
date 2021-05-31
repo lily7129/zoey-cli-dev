@@ -4,7 +4,7 @@
 const log = require('npmlog')
 
 // log.level = 'verbose'
-log.level = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'info' // 判断debug模式
+log.level = process.env.CLI_LOG_LEVEL ? process.env.CLI_LOG_LEVEL : 'info' // 判断debug模式
 
 log.heading = 'Zoey' // 修改前缀
 log.headingStyle = { fg: 'red', bg: 'white' }

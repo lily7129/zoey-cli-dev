@@ -11,7 +11,8 @@ const path = require('path')
 const semver = require('semver')
 const colors = require('colors/safe')
 const log = require('@zoey-cli-dev/log')
-const init = require('@zoey-cli-dev/init')
+const exec = require('@zoey-cli-dev/exec')
+// const init = require('@zoey-cli-dev/init')
 const commander = require('commander')
 const userHome = require('user-home')
 const pathExists = require('path-exists').sync
@@ -24,17 +25,21 @@ const program = new commander.Command()
 
 async function core() { 
     try { 
-        checkPkgVersion()
-        checkNodeVersion()
-        checkRoot()
-        checkUserHome()
-        // checkInputArgs()
-        checkEnv()
-        await checkGlobalUpdate()
+        await prepare()
         registerCommand()
     } catch (e) {
         log.error(e.message)
     }
+}
+
+async function prepare() {
+    checkPkgVersion()
+    checkNodeVersion()
+    checkRoot()
+    checkUserHome()
+    // checkInputArgs()
+    checkEnv()
+    await checkGlobalUpdate()
 }
 
 function registerCommand() {
@@ -42,24 +47,24 @@ function registerCommand() {
         .name(Object.keys(pkg.bin)[0])
         .usage('<command> [options]')
         .version(pkg.version)
-        .option('-d, --debug', '是否开启调试模式', false)
+        .option('-d, --debug', '是否开启调试模式', true)
         .option('-tp, --targetPath <targetPath>', '是否指定本地调试路径', false)
 
     // 使用commnad注册命令
     program
         .command('init [projectName]') 
         .option('-f, --force', '是否强制启动项目')
-        .action(init)
+        .action(exec)
 
     // 开始调试模式
     program
         .on('option:debug', function() {
             const options = program.opts()
-            // 修改环境变量的log_level
-            process.env.LOG_LEVEL = options.debug ? 'verbose' : 'info' // 早于命令执行之前做
+            // 修改环境变量的CLI_LOG_LEVEL
+            process.env.CLI_LOG_LEVEL = options.debug ? 'verbose' : 'info' // 早于命令执行之前做
 
             // 修改当前实例log的level
-            log.level = process.env.LOG_LEVEL
+            log.level = process.env.CLI_LOG_LEVEL
 
             // log.verbose('debug', 'verbose')
         }) // 监听debug命令
@@ -67,13 +72,9 @@ function registerCommand() {
     program
         .on('option:targetPath', function() {
             const options = program.opts()
-            // 修改环境变量的log_level
-            process.env.LOG_LEVEL = options.debug ? 'verbose' : 'info' // 早于命令执行之前做
-
-            // 修改当前实例log的level
-            log.level = process.env.LOG_LEVEL
-
-            // log.verbose('debug', 'verbose')
+            // 修改环境变量的CLI_TARGET_PATH
+            process.env.CLI_TARGET_PATH = options.targetPath
+            log.verbose('debug', 'targetPath')
         }) // 监听debug命令
 
     // 对未知命令监听
@@ -142,21 +143,21 @@ function createDefaultConfig() {
     return cliConfig
 }
 
-function checkInputArgs() {
-    const minimist = require('minimist')
-    args = minimist(process.argv.slice(2))
-    // console.log(args)
-    checkArgs()
-}
+// function checkInputArgs() {
+//     const minimist = require('minimist')
+//     args = minimist(process.argv.slice(2))
+//     // console.log(args)
+//     checkArgs()
+// }
 
-function checkArgs() {
-    if (args.debug) {
-        process.env.LOG_LEVEL = 'verbose'
-    } else {
-        process.env.LOG_LEVEL = 'info'
-    }
-    log.level = process.env.LOG_LEVEL
-}
+// function checkArgs() {
+//     if (args.debug) {
+//         process.env.CLI_LOG_LEVEL = 'verbose'
+//     } else {
+//         process.env.CLI_LOG_LEVEL = 'info'
+//     }
+//     log.level = process.env.CLI_LOG_LEVEL
+// }
 
 function checkUserHome() {
     if(!userHome || !pathExists(userHome)) {
