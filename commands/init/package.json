@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/lily7129/zoey-cli-dev/issues"
+  },
+  "dependencies": {
+    "@zoey-cli-dev/command": "file:../../models/command"
   }
 }

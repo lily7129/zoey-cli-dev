@@ -1,8 +1,8 @@
 {
-  "name": "@zoey-cli-dev/package",
+  "name": "@zoey-dev-cli/command",
   "version": "1.0.3",
-  "description": "zoey-cli-dev npm package",
-  "author": "18210905549@163.com <zoey.deng@yingzt.com>",
+  "description": "@zoey-dev-cli command",
+  "author": "zoey.deng <18210905549@163.com>",
   "homepage": "https://github.com/lily7129/zoey-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -27,12 +27,7 @@
     "url": "https://github.com/lily7129/zoey-cli-dev/issues"
   },
   "dependencies": {
-    "@zoey-cli-dev/format-path": "file:../../utils/format-path",
-    "@zoey-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
-    "@zoey-cli-dev/utils": "file:../../utils/utils",
-    "fs-extra": "^7.0.1",
-    "npminstall": "^4.11.0",
-    "path-exists": "^4.0.0",
-    "pkg-dir": "^5.0.0"
+    "colors": "^1.4.0",
+    "semver": "^7.3.5"
   }
 }

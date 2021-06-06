@@ -20,7 +20,6 @@ const pathExists = require('path-exists').sync
 const pkg = require('../package.json')
 const constant = require('./const')
 
-let args
 const program = new commander.Command()
 
 async function core() { 
@@ -29,12 +28,15 @@ async function core() {
         registerCommand()
     } catch (e) {
         log.error(e.message)
+        if(process.env.CLI_LOG_LEVEL === 'debug') {
+          log.verbose(e)
+        }
     }
 }
 
 async function prepare() {
     checkPkgVersion()
-    checkNodeVersion()
+    // checkNodeVersion()
     checkRoot()
     checkUserHome()
     // checkInputArgs()
@@ -172,18 +174,17 @@ function checkRoot() {
     // 调用 process.setuid()降级
 }
 
-function checkNodeVersion(param) {  
-    // 第一步，获取当前node当前版本号
-    const currentVerion = process.version
-    // console.log(currentVerion)
-    // 比对最低版本号
-    const lowestVersion = constant.LOWEST_NODE_VERSION
-    // console.log(currentVerion)
-    if(!semver.gte(currentVerion, lowestVersion)){
-        throw new Error(colors.red(`zoey-cli 需要安装 v${lowestVersion}以上版本的 Node.js`))
-    }
-
-}
+// function checkNodeVersion(param) {  
+//     // 第一步，获取当前node当前版本号
+//     const currentVerion = process.version
+//     // console.log(currentVerion)
+//     // 比对最低版本号
+//     const lowestVersion = constant.LOWEST_NODE_VERSION
+//     // console.log(currentVerion)
+//     if(!semver.gte(currentVerion, lowestVersion)){
+//         throw new Error(colors.red(`zoey-cli 需要安装 v${lowestVersion}以上版本的 Node.js`))
+//     }
+// }
 
 function checkPkgVersion() {
     // log.success('test', 'success')
