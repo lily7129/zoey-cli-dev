@@ -27,6 +27,13 @@
     "url": "https://github.com/lily7129/zoey-cli-dev/issues"
   },
   "dependencies": {
-    "@zoey-cli-dev/command": "file:../../models/command"
+    "@zoey-cli-dev/command": "file:../../models/command",
+    "@zoey-cli-dev/package": "file:../../models/package",
+    "@zoey-cli-dev/log": "file:../../utils/log",
+    "@zoey-cli-dev/utils": "file:../../utils/utils",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.1",
+    "semver": "^7.3.5",
+    "user-home": "^3.0.0"
   }
 }

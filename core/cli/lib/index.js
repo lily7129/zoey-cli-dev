@@ -57,6 +57,7 @@ function registerCommand() {
         .command('init [projectName]') 
         .option('-f, --force', '是否强制启动项目')
         .action(exec)
+        // .action(init)
 
     // 开始调试模式
     program

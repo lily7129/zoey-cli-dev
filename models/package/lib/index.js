@@ -6,9 +6,9 @@ const fse = require('fs-extra')
 const pkgDir = require('pkg-dir').sync
 const pathExists = require('path-exists').sync
 const npminstall = require('npminstall')
-const { getDefaultRegistry, getNpmLatestVersion } = require('@zoey-cli-dev/get-npm-info')
-const formatPath = require('@zoey-cli-dev/format-path')
 const { isObject } = require('@zoey-cli-dev/utils')
+const formatPath = require('@zoey-cli-dev/format-path')
+const { getDefaultRegistry, getNpmLatestVersion } = require('@zoey-cli-dev/get-npm-info')
 
 class Package {
   constructor(options) {
@@ -66,7 +66,7 @@ class Package {
   // 安装Package
   async install () {
     await this.prepare()
-    npminstall({
+    await npminstall({
       root: this.targetPath, // 模块路径
       storeDir: this.storeDir, // 实际存储位置，root + node_modules
       registry: getDefaultRegistry(),

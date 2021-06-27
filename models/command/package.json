@@ -27,6 +27,8 @@
     "url": "https://github.com/lily7129/zoey-cli-dev/issues"
   },
   "dependencies": {
+    "@zoey-cli-dev/log": "file:../../utils/log",
+    "@zoey-cli-dev/utils": "file:../../utils/utils",
     "colors": "^1.4.0",
     "semver": "^7.3.5"
   }
